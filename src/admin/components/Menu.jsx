@@ -2,22 +2,29 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RiMenu5Fill } from "react-icons/ri";
 import { FiLogOut } from "react-icons/fi";
-import { CgMenuGridR } from "react-icons/cg"
+import { CgMenuGridR } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
 
 
     //Open_Sidebar_Menu
-    const [isOpenSideMenu, setIsOpenSideMenu] = useState(true)
+    const [isOpenSideMenu, setIsOpenSideMenu] = useState(true);
+
+    let navigate = useNavigate();
 
     //Open_Sidebar_Menu
     const handleSideMenu = () => {
-        setIsOpenSideMenu(!isOpenSideMenu)
+        setIsOpenSideMenu(!isOpenSideMenu);        
+    }
+
+    const handleLogOut = () => {
+        localStorage.removeItem("userToken");
+        navigate("/")
     }
 
     return (
-        <aside className="w-64 fixed " aria-label="Sidebar">
-
+        <aside className="w-64 fixed bg-gray-900" aria-label="Sidebar">
             <div className="overflow-y-auto h-screen py-4 px-3  rounded border-r hidden lg:block">
                 <ul className="space-y-2">
                     <li>
@@ -31,28 +38,23 @@ function Menu() {
                         </Link>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
-                        </a>
+                        <Link to={"/dashboard/galleryadmin"} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <span className="flex-1 ml-3 whitespace-nowrap">Galeri</span>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-                        </a>
+                        <Link  to={"/dashboard/membersadmin"} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <span className="flex-1 ml-3 whitespace-nowrap">Üyeler</span>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
-                        </a>
+                        <Link  to={"/dashboard/users"} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <span className="flex-1 ml-3 whitespace-nowrap">Kullanıcılar</span>
+                        </Link>
                     </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <span className="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                    <li className='cursor-pointer'>
+                        <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <span onClick={handleLogOut}  className="flex-1 ml-3 whitespace-nowrap">Çıkış</span>
                         </a>
                     </li>
                 </ul>

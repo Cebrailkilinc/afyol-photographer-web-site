@@ -1,31 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Aos from "aos"
 import "aos/dist/aos.css"
+import ActivityService from '../services/activityService';
 
 
 function Activity() {
+    const [allActivity, setAllActivity] = useState([])
+
+    let activityService = new ActivityService();
+
     useEffect(() => {
-        Aos.init({ duration: 2000 })
-    }, [])
+        activityService.getAllActivity()
+            .then(result => {              
+                setAllActivity(result.data)
+            }).catch(error => { console.log(error) });
+    }, [allActivity])
+
+    const deleteActivity = (activityId) => {
+        activityService.deleteActivity(activityId)
+            .then(result => {
+                console.log(result.data)
+                setAllActivity([result.data, ...allActivity])
+            }).catch(error => { console.log(error) });
+    }
+
     return (
         <div>
             <h1 className='mt-20 max-w-3xl mx-auto flex justify-center font-display4 text-6xl' >Etkinlikler</h1>
             <div className='mt-10 max-w-4xl mx-auto '>
-                <div className='text-center mx-auto sm:flex sm:items-center sm:justify-center'
-                    data-aos="fade-zoom-in"
-                    data-aos-easing="ease-in-back"
-                    data-aos-delay="500"
-                    data-aos-offset="0"
-                >
-                    <span className='w-2/5 px-3 '>Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</span>
+                {
+                    allActivity && allActivity.map((item, i) => {
+                        return (
+                            <div key={i} className='text-center mx-auto sm:flex sm:items-center sm:justify-center' >
+                                <span className='w-2/5 px-3'>{item.details}</span>
+                                <button onClick={() => { deleteActivity(item.id) }} className='border px-2 mt-2'>Sil</button>
+                                <img className='w-11/12 mt-5 sm:mt-20 sm:w-2/5 mx-auto ' src={item.photo} />
+                            </div>
+                        )
 
-                    <img className='w-11/12 mt-5 sm:w-2/5 mx-auto ' src="https://picsum.photos/400/300" />
-                </div>
-                <div className='text-center mx-auto sm:flex sm:items-center sm:justify-center' >
-                    <span className='w-2/5 px-3'>Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</span>
+                    })
+                }
 
-                    <img className='w-11/12 mt-5 sm:mt-20 sm:w-2/5 mx-auto ' src="https://picsum.photos/400/300" />
-                </div>
             </div>
         </div>
     )

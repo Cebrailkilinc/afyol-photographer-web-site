@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from 'swiper';
 import { Pagination, Navigation } from "swiper";
+import SliderService from '../services/sliderService';
+import AnnouncementService from '../services/announcementService';
 import backroundImage1 from "../assets/backroundImage1.jpg"
 import backroundImage2 from "../assets/backroundImage2.jpg"
 import backroundImage3 from "../assets/backroundImage3.jpg"
 
 function Slider() {
+
+    useEffect(() => {
+        let sliderService = new SliderService();
+        sliderService.getPhotos().then(result => { console.log(result.data) }).catch(error => console.log(error));
+
+        let announcementService = new AnnouncementService();
+        announcementService.getAllAnnouncement().then(result => { console.log(result.data) }).catch(error => console.log(error));
+        
+    }, [])
 
     return (
         <div className='w-full mx-auto' >

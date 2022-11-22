@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
-import Aos from "aos"
-import "aos/dist/aos.css"
+
 
 function About() {
-  useEffect(()=>{
-    Aos.init({duration:2000})
-},[])
   return (
-    <div className='max-w-6xl mx-auto flex items-center space-x-5 font-display4'>      
+    <div className='max-w-5xl mx-auto flex mt-24  items-center h-screen space-x-5 font-display4'>      
 
-      <div className='w-4/6'>
-        <h1 className='text-7xl    p-10'>Biz Kimiz ?</h1>
-        <p data-aos = "fade-right"  className=' p-10 text-sm'>
+      <div className='w-4/6 mt-96 '>
+        <h1 className='text-7xl p-10'>Biz Kimiz ?</h1>
+        <p className=' p-10 text-sm'>
           Futbola henüz 8 yaşındayken, doğup büyüdüğü Bayrampaşa'nın Altıntepsi mahallesindeki amatör bir takım olan Altıntepsi Makelspor'da başladı. 1997'den 2000'e kadar futbol yaşamını Altıntepsi Makelspor'da sürdürdü. 2000 yılında 12 yaşındayken, Galatasaray'a transfer oldu. 2000'den 2005 yılına kadar Galatasaray altyapısında futbol oynadı.
           Galatasaray forması ile ilk resmî maçına, 22 Ocak 2005 tarihinde Bursaspor ile oynanan Türkiye Kupası maçında çıktı. Profesyonel olduktan sonra da bir süre Galatasaray altyapısında forma giyen Turan, 2005-06 sezonunun ikinci yarısında Manisaspor'a kiralandı. Bu takımdaki ilk resmî maçına Ankaragücü ile deplasmanda oynanan maçta çıktı ve 2-0 kazanılan karşılaşmada, hem kulüp kariyerindeki hem de Süper Lig'deki ilk golünü attı.
           Manisaspor'da geçirdiği yarım sezonun ardından Galatasaray'a döndü. Galatasaray'ın 9 Ağustos 2006 tarihinde, Şampiyonlar Ligi 3. ön eleme turu'nda Mladá Boleslav karşısında 5-2 kazandığı karşılaşmada 2 gol atıp 1 asist yaptı. Böylece Galatasaray forması altında ilk resmî golünü attı. 13 Ağustos 2006 tarihinde, Galatasaray'ın Kayserispor'u 4-0 mağlup ettiği karşılaşmada Galatasaray forması ile Süper Lig'deki ilk golünü attı. 2009-10 sezonunda, henüz 22 yaşındayken Galatasaray A takımının kaptanlığına getirildi ve 10 numaralı forma kendisine verildi.
@@ -21,7 +17,7 @@ function About() {
           6 Haziran 2017 Makedonya maçından dönerken uçakta gazeteci Bilal Meşe'ye küfredip boğazını sıkarak saldırdığı için eleştirilere uğrayan Turan,[7][8] millî takım kariyerini sonlandırdı.[9]
         </p>
       </div>
-      <img data-aos = "fade-left" className='w-2/6 object-cover' src="https://picsum.photos/200/300 " />
+      <img  className='w-2/6 object-cover' src="https://picsum.photos/200/300 " />
 
     </div>
 

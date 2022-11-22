@@ -22,7 +22,7 @@ function Navbar() {
                         <Link to={"/"}><li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>Anasayfa</li></Link>
                         <Link to={"about"}><li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>Hakkımızda</li></Link>
                         <Link to={"gallery"}><li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear ' >Galeri</li></Link>
-                        <Link to={"members"}> <li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>Üyelerimiz</li></Link>                        
+                        <Link to={"usermembers"}> <li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>Üyelerimiz</li></Link>                        
                         <Link to={"contact"}><li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>İletişim</li></Link>
                         <Link to={"dashboard"}><li className='cursor-pointer hover:text-sky-400 duration-300 transform hover:scale-105 transition ease-linear '>dashboard</li></Link>
                     </ul>
